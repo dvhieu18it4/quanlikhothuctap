@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\sanpham;
+use App\nhap;
+use App\xuat;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,7 @@ class HomeController extends Controller
     {
     	return view('admin.admin');	
     }
-
+//sp
     public function sanphamtrangchu()
     {
         $sanpham = sanpham::all();
@@ -48,13 +50,6 @@ class HomeController extends Controller
         return redirect()->route('sanpham')->with('status','Thêm thành công');
     }
 
-    public function deletesanpham(Request $request,$id)
-    {
-        $sanpham =sanpham::findOrFail($id);
-        $sanpham->delete();
-        return redirect()->route('sanpham')->with('status','Xóa thành công');
-    }
-
     public function updatesanpham(Request $request ,$id)
     {
         $sanpham = sanpham::find($id);
@@ -64,5 +59,92 @@ class HomeController extends Controller
         $sanpham ->update();
 
         return redirect()->route('sanpham')->with('status','Cập nhật thành công');
+    }
+
+    public function deletesanpham(Request $request,$id)
+    {
+        $sanpham =sanpham::findOrFail($id);
+        $sanpham->delete();
+        return redirect()->route('sanpham')->with('status','Xóa thành công');
+    }
+//nhap
+    public function hoadonnhap()
+    {
+        $hoadonnhap = nhap::all();
+        $hoadonnhap = nhap::paginate(10);
+
+        return view('admin.hoadonnhap')->with('hoadonnhap',$hoadonnhap);
+    }
+
+    
+    public function addhoadonnhap(Request $request){
+
+        nhap::create([
+            'sanpham_id' => $request['idsanpham'],
+            'gianhap'=>$request['gianhap'] ,
+            'soluong' =>$request['soluong'] ,
+            'tong' =>$request['tongtien'] 
+            
+        ]);
+        return redirect()->route('hoadonnhap')->with('status','Thêm thành công');
+    }
+
+    public function deletehoadonnhap(Request $request,$id)
+    {
+        $hoadonnhap =nhap::findOrFail($id);
+        $hoadonnhap->delete();
+        return redirect()->route('hoadonnhap')->with('status','Xóa thành công');
+    }
+
+    public function updatehoadonnhap(Request $request ,$id)
+    {
+        $hoadonnhap = nhap::find($id);
+        $hoadonnhap ->sanpham_id = $request->input('idsp');
+        $hoadonnhap ->gianhap = $request->input('gia');
+        $hoadonnhap ->soluong = $request->input('soluong');
+        $hoadonnhap ->tong = $request->input('tong');
+        $hoadonnhap ->update();
+
+        return redirect()->route('hoadonnhap')->with('status','Cập nhật thành công');
+    }
+//xuat
+    public function hoadonxuat()
+    {
+        $hoadonxuat = xuat::all();
+        $hoadonxuat = xuat::paginate(10);
+
+        return view('admin.hoadonxuat')->with('hoadonxuat',$hoadonxuat);
+    }
+
+    
+    public function addhoadonxuat(Request $request){
+
+        xuat::create([
+            'sanpham_id' => $request['idsanpham'],
+            'giaxuat'=>$request['giaxuat'] ,
+            'soluong' =>$request['soluong'] ,
+            'tong' =>$request['tongtien'] 
+            
+        ]);
+        return redirect()->route('hoadonxuat')->with('status','Thêm thành công');
+    }
+
+    public function deletehoadonxuat(Request $request,$id)
+    {
+        $hoadonxuat =xuat::findOrFail($id);
+        $hoadonxuat->delete();
+        return redirect()->route('hoadonxuat')->with('status','Xóa thành công');
+    }
+
+    public function updatehoadonxuat(Request $request ,$id)
+    {
+        $hoadonxuat = xuat::find($id);
+        $hoadonxuat ->sanpham_id = $request->input('idsp');
+        $hoadonxuat ->giaxuat = $request->input('gia');
+        $hoadonxuat ->soluong = $request->input('soluong');
+        $hoadonxuat ->tong = $request->input('tong');
+        $hoadonxuat ->update();
+
+        return redirect()->route('hoadonxuat')->with('status','Cập nhật thành công');
     }
 }

@@ -42,20 +42,15 @@
               <p>Sản phẩm</p>
             </a>
           </li>
+          
           <li>
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Tài khoản</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
+            <a href="hoadonnhap">
               <i class="now-ui-icons location_map-big"></i>
               <p>Hóa đơn nhập</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="hoadonxuat">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Hóa đơn xuất</p>
             </a>
@@ -66,7 +61,12 @@
               <p>Báo cáo</p>
             </a>
           </li>
-          
+          <li>
+            <a href="./icons.html">
+              <i class="now-ui-icons education_atom"></i>
+              <p>Tài khoản</p>
+            </a>
+          </li>
           
         </ul>
       </div>
