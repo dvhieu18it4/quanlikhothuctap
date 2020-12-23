@@ -44,7 +44,7 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 									{{ method_field('POST') }}
 									
 									<div class="form-group">
-										<label for="recipient-name" class="col-form-label">Tensanpham</label>
+										<label for="recipient-name" class="col-form-label">Tên sản phẩm</label>
 										<select name="idsanpham" class="form-control form-control-success">
 											@foreach ($getnamesanpham as $row)
 											<option value="{{ $row->id }}">{{ $row->tensp}}</option>
@@ -90,7 +90,7 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 						<thead class=" text-primary ">
 						
 							<th class="text-center"> STT </th>
-							<th> tên sản phẩm</th>
+							<th> Tên sản phẩm</th>
                             <th> Giá nhập</th>
                             <th> Số lượng</th>
 							<th> Tổng tiền</th>
@@ -105,9 +105,9 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $row->tensp}}</td>
-							<td>{{ $row->gianhap }}</td>
+							<td>{{ $row->gianhap }} VND</td>
 							<td>{{ $row->soluong }}</td>
-                            <td>{{ $row->tong }}</td>
+                            <td>{{ $row->tong }} VND</td>
                             <td>{{ date('d/m/Y', strtotime($row->ngaynhap)) }}</td>
 							<td class="td-actions text-center">
 								<a href="#">
@@ -133,28 +133,28 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 													<fieldset disabled>
 														<div class="form-group">
 														
-														  <input type="hidden" id="disabledTextInput" class="form-control"  name="id" value="{{ $row->id}}" >
+														  <input type="hidden" id="disabledTextInput" class="form-control"  name="idsp" value="{{ $row->id}}" >
 														</div>
 													</fieldset>
 
 													<div class="form-group">
 														<label for="recipient-name" class="col-form-label" style=" text-right:none!important">ID sản phẩm :</label>
-														<input type="text" class="form-control" name="idsp" id="recipient-name" value="{{ $row -> sanpham_id}}">
+														<input type="text" class="form-control" name="idsp" id="recipient-name" value="{{ $row->sanpham_id }}">
 													</div>
 
 													<div class="form-group">
 														<label for="recipient-phone" class="col-form-label">Giá:</label>
-														<input type="text" class="form-control" name="gia" id="recipient-phone" value="{{ $row -> gianhap}}">
+														<input type="text" class="form-control" name="gia" id="gianhap" value="{{ $row -> gianhap}}" onkeyup="myFunctions()">
 													</div>
 
 													<div class="form-group">
 														<label for="recipient-email" class="col-form-label">Số lượng:</label>
-														<input type="text" class="form-control" name="soluong" id="recipient-email" value="{{ $row -> soluong}}">
+														<input type="text" class="form-control" name="soluong" id="soluong" value="{{ $row -> soluong}}" onkeyup="myFunctions()">
 													</div>
 
                                                     <div class="form-group">
 														<label for="recipient-phone" class="col-form-label">Tổng:</label>
-														<input type="text" class="form-control" name="tong" id="recipient-phone" value="{{ $row -> tong}}">
+														<input type="text" class="form-control" name="tong" id="tongtien" value="{{ $row -> tong}}">
 													</div>
 													
 
@@ -211,6 +211,14 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 	  var x = document.getElementById("recipient-soluong");
 	  var y = document.getElementById("recipient-gianhap");
 	  var z = document.getElementById("recipient-tongtien");
+	  z.value = x.value * y.value;
+	}
+</script>
+<script>
+	function myFunctions() {
+	  var x = document.getElementById("soluong");
+	  var y = document.getElementById("gianhap");
+	  var z = document.getElementById("tongtien");
 	  z.value = x.value * y.value;
 	}
 </script>

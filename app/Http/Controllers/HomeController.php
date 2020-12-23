@@ -120,10 +120,19 @@ class HomeController extends Controller
 //xuat
     public function hoadonxuat()
     {
-        $hoadonxuat = xuat::all();
-        $hoadonxuat = xuat::paginate(10);
+        $hoadonxuat = DB::table('xuat as n')
+        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        ->select('n.*','sp.tensp')
+        ->paginate(10);
+        
 
-        return view('admin.hoadonxuat')->with('hoadonxuat',$hoadonxuat);
+        $getnamesanpham = sanpham::all();
+
+        return view('admin.hoadonxuat')->with([
+            'hoadonxuat' => $hoadonxuat,
+            'getnamesanpham' => $getnamesanpham
+        ]);
+
     }
 
     
@@ -133,7 +142,8 @@ class HomeController extends Controller
             'sanpham_id' => $request['idsanpham'],
             'giaxuat'=>$request['giaxuat'] ,
             'soluong' =>$request['soluong'] ,
-            'tong' =>$request['tongtien'] 
+            'tong' =>$request['tongtien'] ,
+            'ngayxuat' =>$request['date']
             
         ]);
         return redirect()->route('hoadonxuat')->with('status','Thêm thành công');
