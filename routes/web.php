@@ -74,6 +74,11 @@ Route::put('/update-hoadonxuat/{id}', [
 	'uses'=>'HomeController@updatehoadonxuat'
 ]);
 
+Route::get('/baocaoton' ,[
+	'as' => 'baocaoton',
+	'uses' => 'HomeController@baocaoton'
+]);
+
 
 
 

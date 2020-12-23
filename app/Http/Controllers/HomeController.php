@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\sanpham;
 use App\nhap;
 use App\xuat;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -70,8 +70,12 @@ class HomeController extends Controller
 //nhap
     public function hoadonnhap()
     {
-        $hoadonnhap = nhap::all();
-        $hoadonnhap = nhap::paginate(10);
+        
+        $hoadonnhap = DB::table('nhap as n')
+        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        ->select('n.*','sp.tensp')
+        ->paginate(10);
+        
 
         $getnamesanpham = sanpham::all();
 
@@ -153,4 +157,29 @@ class HomeController extends Controller
 
         return redirect()->route('hoadonxuat')->with('status','Cập nhật thành công');
     }
+
+//bao cao ton
+    public function baocaoton()
+    {
+        $baocaoton = DB::table('nhap as n')
+        ->select('n.*', 'x.*','sp.*')
+        // ->orderBy('id','desc')
+        ->join('xuat as x', 'n.sanpham_id', '=', 'n.sanpham_id')
+        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        ->paginate(10);
+
+        $page =1;
+        if(isset($request->page)){
+            $page = $request->page;
+        }
+
+        $index = ($page-1)*10+1;
+
+        return view('admin.baocaoton')->with([
+            'baocaoton'=>$baocaoton,
+            'index' =>$index
+        ]);
+    }
 }
+
+

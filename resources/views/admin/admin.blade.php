@@ -56,9 +56,9 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="baocaoton">
               <i class="now-ui-icons users_single-02"></i>
-              <p>Báo cáo</p>
+              <p>Báo cáo tồn</p>
             </a>
           </li>
           <li>

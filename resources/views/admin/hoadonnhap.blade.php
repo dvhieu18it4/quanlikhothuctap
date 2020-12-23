@@ -90,7 +90,7 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 						<thead class=" text-primary ">
 						
 							<th class="text-center"> STT </th>
-							<th> ID sản phẩm</th>
+							<th> tên sản phẩm</th>
                             <th> Giá nhập</th>
                             <th> Số lượng</th>
 							<th> Tổng tiền</th>
@@ -104,7 +104,7 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 						@foreach ($hoadonnhap as $row)
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
-							<td>{{ $row->sanpham_id}}</td>
+							<td>{{ $row->tensp}}</td>
 							<td>{{ $row->gianhap }}</td>
 							<td>{{ $row->soluong }}</td>
                             <td>{{ $row->tong }}</td>
