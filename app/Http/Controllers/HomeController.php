@@ -190,6 +190,30 @@ class HomeController extends Controller
             'index' =>$index
         ]);
     }
+
+    public function tinhtrang()
+    {
+        $sanpham = sanpham::all();
+        $sanpham = sanpham::paginate(10);
+
+        return view('admin.tinhtrang')->with('sanpham',$sanpham);
+    }
+
+    public function chitiet(Request $req)
+    {
+        $nhap = nhap::where('sanpham_id',$req->id)->paginate(10);
+        $xuat = xuat::where('sanpham_id',$req->id)->paginate(10);
+        $tongnhap=DB::table("nhap")->where('sanpham_id',$req->id)->get()->sum("soluong");
+        $tongxuat=DB::table("xuat")->where('sanpham_id',$req->id)->get()->sum("soluong");
+        return view('admin.chitiet')->with([
+            'tongnhap'=>$tongnhap,
+            'tongxuat'=>$tongxuat,
+            'nhap'=>$nhap,
+            'xuat'=>$xuat
+        ]);
+    }
+
+
 }
 
 

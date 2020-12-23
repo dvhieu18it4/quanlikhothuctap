@@ -78,6 +78,14 @@ Route::get('/baocaoton' ,[
 	'as' => 'baocaoton',
 	'uses' => 'HomeController@baocaoton'
 ]);
+Route::get('/tinhtrang' ,[
+	'as' => 'tinhtrang',
+	'uses' => 'HomeController@tinhtrang'
+]);
+Route::get('chitiet/{id}',[
+	'as'=>'chitiet',
+	'uses'=>'HomeController@chitiet'
+]);
 
 
 

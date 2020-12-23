@@ -62,6 +62,12 @@
             </a>
           </li>
           <li>
+            <a href="tinhtrang">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Tình trạng</p>
+            </a>
+          </li>
+          <li>
             <a href="./icons.html">
               <i class="now-ui-icons education_atom"></i>
               <p>Tài khoản</p>
