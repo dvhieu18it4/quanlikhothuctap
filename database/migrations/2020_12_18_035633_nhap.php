@@ -17,9 +17,9 @@ class Nhap extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sanpham_id');           
             $table->integer('gianhap');
-            $table->integer('soluong');
+            $table->integer('soluongnhap');
             $table->date('ngaynhap'); 
-            $table->integer('tong'); 
+            $table->integer('tongnhap'); 
             $table->timestamps();
         });
 

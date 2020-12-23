@@ -10,7 +10,7 @@ Dashboard | DANH SÁCH HÓA ĐƠN XUẤT
 		<div class="card">
 			<div class="card-header">
 				<h4 class="card-title">DANH SÁCH HÓA ĐƠN XUẤT </h4>
-					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Thêm hóa đơn</button>
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Xuất hóa đơn</button>
 				<div class="input-group no-border">
                 <input id="myInput" type="text" value="" class="form-control" placeholder="Search...">
                 <div class="input-group-append">
@@ -102,8 +102,8 @@ Dashboard | DANH SÁCH HÓA ĐƠN XUẤT
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $row->tensp}}</td>
 							<td>{{ $row->giaxuat }} VND</td>
-							<td>{{ $row->soluong }}</td>
-                            <td>{{ $row->tong }} VND</td>
+							<td>{{ $row->soluongxuat }}</td>
+                            <td>{{ $row->tongxuat }} VND</td>
 							<td>{{ date('d/m/Y', strtotime($row->ngayxuat)) }}</td>
 							<td class="td-actions text-center">
 								<a href="#">
@@ -145,12 +145,12 @@ Dashboard | DANH SÁCH HÓA ĐƠN XUẤT
 
 													<div class="form-group">
 														<label for="recipient-email" class="col-form-label">Số lượng:</label>
-														<input type="text" class="form-control" name="soluong" id="soluong" value="{{ $row -> soluong}}" onkeyup="myFunctions()">
+														<input type="text" class="form-control" name="soluong" id="soluong" value="{{ $row -> soluongxuat}}" onkeyup="myFunctions()">
 													</div>
 
                                                     <div class="form-group">
 														<label for="recipient-phone" class="col-form-label">Tổng:</label>
-														<input type="text" class="form-control" name="tong" id="tongtien" value="{{ $row -> tong}}">
+														<input type="text" class="form-control" name="tong" id="tongtien" value="{{ $row -> tongxuat}}">
 													</div>
 													
 
