@@ -73,7 +73,12 @@ class HomeController extends Controller
         $hoadonnhap = nhap::all();
         $hoadonnhap = nhap::paginate(10);
 
-        return view('admin.hoadonnhap')->with('hoadonnhap',$hoadonnhap);
+        $getnamesanpham = sanpham::all();
+
+        return view('admin.hoadonnhap')->with([
+            'hoadonnhap' => $hoadonnhap,
+            'getnamesanpham' => $getnamesanpham
+        ]);
     }
 
     
@@ -83,7 +88,8 @@ class HomeController extends Controller
             'sanpham_id' => $request['idsanpham'],
             'gianhap'=>$request['gianhap'] ,
             'soluong' =>$request['soluong'] ,
-            'tong' =>$request['tongtien'] 
+            'tong' =>$request['tongtien'], 
+            'ngaynhap' =>$request['date']
             
         ]);
         return redirect()->route('hoadonnhap')->with('status','Thêm thành công');

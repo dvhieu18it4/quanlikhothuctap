@@ -197,6 +197,7 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('/assets/js/now-ui-dashboard.min.js?v=1.3.0')}}" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  @yield('scripts')
 </body>
 
 </html>
