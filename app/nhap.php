@@ -9,6 +9,6 @@ class nhap extends Model
     public $table = "nhap";
 
 	protected $fillable = [
-        'sanpham_id','gianhap' ,'soluong', 'tong', 'ngaynhap'
+        'sanpham_id','gianhap' ,'soluongnhap', 'tongnhap', 'ngaynhap'
     ];
 }

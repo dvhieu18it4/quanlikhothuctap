@@ -70,13 +70,15 @@ Dashboard | DANH SÁCH BÁO CÁO
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table">
+					<table class="table table-bordered">
 						<thead class=" text-primary ">
 						
 							<th class="text-center"> STT </th>
 							<th> Tên sản phẩm</th>
-							<th> Nhà cung cấp</th>
-							<th> Thông tin sp</th>
+							<th> Đã Bán </th>
+                            <th> Tồn</th>
+                            <th> Tổng tiền</th>
+                            <th> Lãi</th>
 							<th class="text-center">Tác vụ</th>
 						</thead>
 							<tbody >
@@ -87,9 +89,11 @@ Dashboard | DANH SÁCH BÁO CÁO
 						<tr>
 							<td class="text-center">{{$index++ }}</td>
 							<td>{{ $row->tensp}}</td>
-							<td>{{ $row->ncc }}</td>
-							<td>{{ $row->thongtin }}</td>
-			
+							<td>{{ $row->soluongxuat}}</td>
+							<td id = "value" > 
+                               
+                            </td>
+                            
 							<td class="td-actions text-center">
 								<a href="#">
 									
@@ -179,5 +183,10 @@ Dashboard | DANH SÁCH BÁO CÁO
 
 
 @section('scripts')
-{{-- expr --}}
+<script>
+    var x = {{ $row->soluongnhap}}
+    var y = {{ $row->soluongxuat}}
+    var z = x - y 
+    $('#value').html(z);
+</script>
 @endsection

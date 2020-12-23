@@ -106,8 +106,8 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $row->tensp}}</td>
 							<td>{{ $row->gianhap }} VND</td>
-							<td>{{ $row->soluong }}</td>
-                            <td>{{ $row->tong }} VND</td>
+							<td>{{ $row->soluongnhap }}</td>
+                            <td>{{ $row->tongnhap }} VND</td>
                             <td>{{ date('d/m/Y', strtotime($row->ngaynhap)) }}</td>
 							<td class="td-actions text-center">
 								<a href="#">
@@ -149,12 +149,12 @@ Dashboard | DANH SÁCH HÓA ĐƠN NHẬP
 
 													<div class="form-group">
 														<label for="recipient-email" class="col-form-label">Số lượng:</label>
-														<input type="text" class="form-control" name="soluong" id="soluong" value="{{ $row -> soluong}}" onkeyup="myFunctions()">
+														<input type="text" class="form-control" name="soluong" id="soluong" value="{{ $row -> soluongnhap}}" onkeyup="myFunctions()">
 													</div>
 
                                                     <div class="form-group">
 														<label for="recipient-phone" class="col-form-label">Tổng:</label>
-														<input type="text" class="form-control" name="tong" id="tongtien" value="{{ $row -> tong}}">
+														<input type="text" class="form-control" name="tong" id="tongtien" value="{{ $row -> tongnhap}}">
 													</div>
 													
 

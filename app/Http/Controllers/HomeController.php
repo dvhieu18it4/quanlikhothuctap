@@ -91,8 +91,8 @@ class HomeController extends Controller
         nhap::create([
             'sanpham_id' => $request['idsanpham'],
             'gianhap'=>$request['gianhap'] ,
-            'soluong' =>$request['soluong'] ,
-            'tong' =>$request['tongtien'], 
+            'soluongnhap' =>$request['soluong'] ,
+            'tongnhap' =>$request['tongtien'], 
             'ngaynhap' =>$request['date']
             
         ]);
@@ -111,8 +111,8 @@ class HomeController extends Controller
         $hoadonnhap = nhap::find($id);
         $hoadonnhap ->sanpham_id = $request->input('idsp');
         $hoadonnhap ->gianhap = $request->input('gia');
-        $hoadonnhap ->soluong = $request->input('soluong');
-        $hoadonnhap ->tong = $request->input('tong');
+        $hoadonnhap ->soluongnhap = $request->input('soluong');
+        $hoadonnhap ->tongnhap = $request->input('tong');
         $hoadonnhap ->update();
 
         return redirect()->route('hoadonnhap')->with('status','Cập nhật thành công');
@@ -141,8 +141,8 @@ class HomeController extends Controller
         xuat::create([
             'sanpham_id' => $request['idsanpham'],
             'giaxuat'=>$request['giaxuat'] ,
-            'soluong' =>$request['soluong'] ,
-            'tong' =>$request['tongtien'] ,
+            'soluongxuat' =>$request['soluong'] ,
+            'tongxuat' =>$request['tongtien'] ,
             'ngayxuat' =>$request['date']
             
         ]);
@@ -161,8 +161,8 @@ class HomeController extends Controller
         $hoadonxuat = xuat::find($id);
         $hoadonxuat ->sanpham_id = $request->input('idsp');
         $hoadonxuat ->giaxuat = $request->input('gia');
-        $hoadonxuat ->soluong = $request->input('soluong');
-        $hoadonxuat ->tong = $request->input('tong');
+        $hoadonxuat ->soluongxuat = $request->input('soluong');
+        $hoadonxuat ->tongxuat = $request->input('tong');
         $hoadonxuat ->update();
 
         return redirect()->route('hoadonxuat')->with('status','Cập nhật thành công');
@@ -171,11 +171,16 @@ class HomeController extends Controller
 //bao cao ton
     public function baocaoton()
     {
-        $baocaoton = DB::table('nhap as n')
-        ->select('n.*', 'x.*','sp.*')
+        $baocaoton = DB::table('sanpham as sp')
+        ->select('x.*','n.*', 'sp.*')
         // ->orderBy('id','desc')
-        ->join('xuat as x', 'n.sanpham_id', '=', 'n.sanpham_id')
-        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        // ->where([
+        //     ['n.sanpham_id', '=', 'sp.id'],
+        //     ['x.sanpham_id', '=', 'sp.id'],
+        // ])
+        ->join('xuat as x', 'x.sanpham_id', '=', 'sp.id')
+        ->join('nhap as n', 'n.sanpham_id', '=', 'sp.id')
+        ->distinct()
         ->paginate(10);
 
         $page =1;

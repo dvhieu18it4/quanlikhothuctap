@@ -16,9 +16,9 @@ class Xuat extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sanpham_id');           
             $table->integer('giaxuat');
-            $table->integer('soluong');
+            $table->integer('soluongxuat');
             $table->date('ngayxuat'); 
-            $table->integer('tong'); 
+            $table->integer('tongxuat'); 
             $table->timestamps();
     });
 
