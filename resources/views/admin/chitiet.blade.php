@@ -133,7 +133,7 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						</div>
 					</div>
 					</table>
-                    Hóa đơn xuất
+                 Hóa đơn xuất
                     <table class="table">
 						<thead class=" text-primary ">
 						
