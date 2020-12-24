@@ -208,8 +208,8 @@ class HomeController extends Controller
     {
         $nhap = nhap::where('sanpham_id',$req->id)->paginate(10);
         $xuat = xuat::where('sanpham_id',$req->id)->paginate(10);
-        $tongnhap=DB::table("nhap")->where('sanpham_id',$req->id)->get()->sum("soluong");
-        $tongxuat=DB::table("xuat")->where('sanpham_id',$req->id)->get()->sum("soluong");
+        $tongnhap=DB::table("nhap")->where('sanpham_id',$req->id)->get()->sum("soluongnhap");
+        $tongxuat=DB::table("xuat")->where('sanpham_id',$req->id)->get()->sum("soluongxuat");
         return view('admin.chitiet')->with([
             'tongnhap'=>$tongnhap,
             'tongxuat'=>$tongxuat,

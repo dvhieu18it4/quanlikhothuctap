@@ -115,8 +115,8 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $row->sanpham_id}}</td>
 							<td>{{ $row->gianhap }} VND</td>
-							<td>{{ $row->soluong }}</td>
-                            <td>{{ $row->tong }} VND</td>
+							<td>{{ $row->soluongnhap }}</td>
+                            <td>{{ $row->tongnhap }} VND</td>
 							<td>{{ date('d/m/Y', strtotime($row->ngaynhap)) }}</td>
 			
 							
@@ -152,9 +152,9 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $rows->sanpham_id}}</td>
-							<td>{{ $rows->giaxuat }} VND</td>
-							<td>{{ $rows->soluong }}</td>
-                            <td>{{ $rows->tong }} VND</td>
+							<td>{{ $rows->giaxuatxuat }} VND</td>
+							<td>{{ $rows->soluongxuat }}</td>
+                            <td>{{ $rows->tongxuat }} VND</td>
 							<td>{{ date('d/m/Y', strtotime($row->ngayxuat)) }}</td>
 			
 							<tr>
