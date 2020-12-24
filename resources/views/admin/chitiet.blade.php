@@ -119,7 +119,7 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						@foreach ($nhap as $row)
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
-							<td>{{ $row->sanpham_id}}</td>
+							<td>{{ $row->tensp}}</td>
 							<td>{{ $row->gianhap }} VND</td>
 							<td>{{ $row->soluongnhap }}</td>
                             <td>{{ $row->tongnhap }} VND</td>
@@ -159,11 +159,11 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						@foreach ($xuat as $rows)
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
-							<td>{{ $rows->sanpham_id}}</td>
+							<td>{{ $rows->tensp}}</td>
 							<td>{{ $rows->giaxuat }} VND</td>
 							<td>{{ $rows->soluongxuat }}</td>
                             <td>{{ $rows->tongxuat }} VND</td>
-							<td>{{ date('d/m/Y', strtotime($row->ngayxuat)) }}</td>
+							<td>{{ date('d/m/Y', strtotime($rows->ngayxuat)) }}</td>
 			
 							<tr>
 						@endforeach

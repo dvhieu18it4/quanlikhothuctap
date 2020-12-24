@@ -206,8 +206,24 @@ class HomeController extends Controller
 
     public function chitiet(Request $req)
     {
-        $nhap = nhap::where('sanpham_id',$req->id)->paginate(10);
-        $xuat = xuat::where('sanpham_id',$req->id)->paginate(10);
+
+        $nhap = DB::table('nhap as n')
+        ->where('sanpham_id',$req->id)
+        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        ->select('n.*','sp.tensp')
+        ->paginate(10);
+        
+        $xuat = DB::table('xuat as n')
+        ->where('sanpham_id',$req->id)
+        ->join('sanpham as sp', 'n.sanpham_id', '=', 'sp.id')
+        ->select('n.*','sp.tensp')
+        ->paginate(10);
+        
+        
+        
+        //$nhap = nhap::where('sanpham_id',$req->id)->paginate(10);
+        //$xuat = xuat::where('sanpham_id',$req->id)->paginate(10);
+        
         $tongnhap=DB::table("nhap")->where('sanpham_id',$req->id)->get()->sum("soluongnhap");
         $tongxuat=DB::table("xuat")->where('sanpham_id',$req->id)->get()->sum("soluongxuat");
         $tongtiennhap=DB::table("nhap")->where('sanpham_id',$req->id)->get()->sum("tongnhap");
