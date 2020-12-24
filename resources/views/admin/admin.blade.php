@@ -55,6 +55,7 @@
               <p>Hóa đơn xuất</p>
             </a>
           </li>
+      
           <li>
             <a href="{{route('baocaoton')}}">
               <i class="now-ui-icons users_single-02"></i>
@@ -68,7 +69,7 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="#">
               <i class="now-ui-icons education_atom"></i>
               <p>Tài khoản</p>
             </a>

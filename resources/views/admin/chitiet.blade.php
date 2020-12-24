@@ -76,6 +76,7 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 							<th> Đã nhập</th>
                             <th> Đã bán</th>
                             <th> Tồn kho</th>
+							<th> Lợi nhuận</th>
 						</thead>
 							<tbody class=" text-primary ">
                             <th> {{$tongnhap}}</th>
@@ -84,6 +85,10 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						    $count = $tongnhap-$tongxuat;
 						    @endphp
                             <th> {{$count}}</th>
+							@php
+						    $loinhuan = $tongtiennhap-$tongtienxuat;
+						    @endphp
+							<th> {{$loinhuan}} VND</th>
 							</tbody>
 							
 						</table>
@@ -94,8 +99,9 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						</div>
 					</div>
 					</table>
-
+					<div class="table-responsive">
                 Hóa đơn nhập
+				
                 <table class="table">
 						<thead class=" text-primary ">
 						
@@ -113,7 +119,7 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						@foreach ($nhap as $row)
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
-							<td>{{ $row->sanpham_id}}</td>
+							<td>{{ $row->tensp}}</td>
 							<td>{{ $row->gianhap }} VND</td>
 							<td>{{ $row->soluongnhap }}</td>
                             <td>{{ $row->tongnhap }} VND</td>
@@ -133,7 +139,9 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						</div>
 					</div>
 					</table>
+					<div class="table-responsive">
                  Hóa đơn xuất
+				 
                     <table class="table">
 						<thead class=" text-primary ">
 						
@@ -151,12 +159,11 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						@foreach ($xuat as $rows)
 						<tr>
 							<td class="text-center">{{$count++ }}</td>
-							<td>{{ $rows->sanpham_id}}</td>
-							<td>{{ $rows->giaxuatxuat }} VND</td>
+							<td>{{ $rows->tensp}}</td>
+							<td>{{ $rows->giaxuat }} VND</td>
 							<td>{{ $rows->soluongxuat }}</td>
                             <td>{{ $rows->tongxuat }} VND</td>
-							<td>{{ date('d/m/Y', strtotime($row->ngayxuat)) }}</td>
-			
+							<td>{{ date('d/m/Y', strtotime($rows->ngayxuat)) }}</td>	
 							<tr>
 						@endforeach
 						
