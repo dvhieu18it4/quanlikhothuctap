@@ -76,6 +76,7 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 							<th> Đã nhập</th>
                             <th> Đã bán</th>
                             <th> Tồn kho</th>
+							<th> Lợi nhuận</th>
 						</thead>
 							<tbody class=" text-primary ">
                             <th> {{$tongnhap}}</th>
@@ -84,6 +85,10 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						    $count = $tongnhap-$tongxuat;
 						    @endphp
                             <th> {{$count}}</th>
+							@php
+						    $loinhuan = $tongtienxuat-$tongtiennhap;
+						    @endphp
+							<th> {{$loinhuan}} VND</th>
 							</tbody>
 							
 						</table>
@@ -94,8 +99,9 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						</div>
 					</div>
 					</table>
-
+					<div class="table-responsive">
                 Hóa đơn nhập
+				
                 <table class="table">
 						<thead class=" text-primary ">
 						
@@ -115,8 +121,8 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $row->sanpham_id}}</td>
 							<td>{{ $row->gianhap }} VND</td>
-							<td>{{ $row->soluong }}</td>
-                            <td>{{ $row->tong }} VND</td>
+							<td>{{ $row->soluongnhap }}</td>
+                            <td>{{ $row->tongnhap }} VND</td>
 							<td>{{ date('d/m/Y', strtotime($row->ngaynhap)) }}</td>
 			
 							
@@ -133,7 +139,9 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 						</div>
 					</div>
 					</table>
+					<div class="table-responsive">
                  Hóa đơn xuất
+				 
                     <table class="table">
 						<thead class=" text-primary ">
 						
@@ -153,8 +161,8 @@ Dashboard | TÌNH TRẠNG SẢN PHẨM
 							<td class="text-center">{{$count++ }}</td>
 							<td>{{ $rows->sanpham_id}}</td>
 							<td>{{ $rows->giaxuat }} VND</td>
-							<td>{{ $rows->soluong }}</td>
-                            <td>{{ $rows->tong }} VND</td>
+							<td>{{ $rows->soluongxuat }}</td>
+                            <td>{{ $rows->tongxuat }} VND</td>
 							<td>{{ date('d/m/Y', strtotime($row->ngayxuat)) }}</td>
 			
 							<tr>

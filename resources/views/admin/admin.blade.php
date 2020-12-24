@@ -35,34 +35,29 @@
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="sanpham">
+        <ul class="nav "  >
+          <li>
+            <a href="{{route('sanpham')}}">
               <i class="now-ui-icons design_app"></i>
               <p>Sản phẩm</p>
             </a>
           </li>
           
           <li>
-            <a href="hoadonnhap">
+            <a href="{{route('hoadonnhap')}}">
               <i class="now-ui-icons location_map-big"></i>
               <p>Hóa đơn nhập</p>
             </a>
           </li>
           <li>
-            <a href="hoadonxuat">
+            <a href="{{route('hoadonxuat')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Hóa đơn xuất</p>
             </a>
           </li>
+      
           <li>
-            <a href="baocaoton">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>Báo cáo tồn</p>
-            </a>
-          </li>
-          <li>
-            <a href="tinhtrang">
+            <a href="{{route('tinhtrang')}}">
               <i class="now-ui-icons users_single-02"></i>
               <p>Tình trạng</p>
             </a>
